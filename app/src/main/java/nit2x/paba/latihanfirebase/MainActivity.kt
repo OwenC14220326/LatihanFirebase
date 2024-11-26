@@ -64,16 +64,36 @@ class MainActivity : AppCompatActivity() {
             TambahData(db, _etProvinsi.text.toString(), _etIbukota.text.toString())
             readData(db)
         }
+
+        _lvData.setOnItemLongClickListener { parent, view, position, id ->
+            val namaPro = data[position].get("Pro")
+            if (namaPro != null) {
+                db.collection("tbProvinsi")
+                    .document(namaPro)
+                    .delete()
+                    .addOnSuccessListener {
+                        Log.d("Firebase", "Berhasil di Hapus")
+                        readData(db)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w("Firebase", e.message.toString())
+                    }
+            }
+            true
+        }
     }
 
     fun TambahData(db: FirebaseFirestore, Provinsi : String, Ibukota : String){
         val dataBaru = daftarProvinsi(Provinsi, Ibukota)
         db.collection("tbProvinsi")
-            .add(dataBaru)
+            .document(dataBaru.provinsi)
+//            .add(dataBaru)
+            .set(dataBaru)
             .addOnSuccessListener {
                 _etProvinsi.setText("")
                 _etIbukota.setText("")
                 Log.d("Firebase", "Data Berhasil Disimpan")
+                readData(db)
             }
             .addOnFailureListener {
                 Log.d("Firebase", it.message.toString())
