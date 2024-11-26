@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "370731218354",
+    "project_id": "latihanfirebase-11e93",
+    "storage_bucket": "latihanfirebase-11e93.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370731218354:android:bbe061fddd7f8d558de0ab",
+        "android_client_info": {
+          "package_name": "nit2x.paba.latihanfirebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiAraw8JAk20uq3Hs-8xTVfIeAtlTw70E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
